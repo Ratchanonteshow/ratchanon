@@ -9,7 +9,8 @@ import { useHistory } from 'react-router-dom';
         this.state = {
             idkey:"",
             firstname:"",
-            lastname:""
+            lastname:"",
+         
         }
         this.handleChang = this.handleChang.bind(this);
         this.handleClicked = this.handleClicked.bind(this);
@@ -24,13 +25,15 @@ import { useHistory } from 'react-router-dom';
         let data = {
             idkey:this.state.idkey,
             firstname:this.state.firstname,
-            lastname:this.state.lastname
+            lastname:this.state.lastname,
+            email:JSON.parse(localStorage.getItem('user')).email,
         }
         axios.post(url,data)
         this.setState({
             idkey:"",
             firstname:"",
-            lastname:""
+            lastname:"",
+        
         });
     }
 

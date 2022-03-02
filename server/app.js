@@ -19,7 +19,7 @@ app.use(body());
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 const db = mysql.createConnection({
-    host: '192.168.208.1',
+    host: '172.31.240.1',
     user: 'boat',
     password: '123456',
     database: 'bo1'
@@ -56,11 +56,17 @@ app.put('/data', function(req, res) {
 
 //insert
 app.post('/data', function(req, res){
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes();
+    var dateTime = date+' '+time;
     console.log(req.body);
     let data = {
         id:req.body.idkey,
         firstname:req.body.firstname,
-        lastname:req.body.lastname
+        lastname:req.body.lastname,
+        email:req.body.email,
+        regisTime:dateTime
     };
     let sql = 'INSERT INTO users SET ?';
     db.query(sql, data, (err, result)=>{

@@ -12,7 +12,9 @@ export default class Showdata extends Component{
             list:[],
             idkey:"",
             firstname:"",
-            lastname:""
+            lastname:"",
+            email:""
+
         }
         this.handleChang = this.handleChang.bind(this);
         this.handleClicked = this.handleClicked.bind(this);
@@ -56,7 +58,8 @@ export default class Showdata extends Component{
         this.setState({
             idkey:user.id,
             firstname:user.firstname,
-            lastname:user.lastname
+            lastname:user.lastname,
+            email:user.email,
         })
     }
     handleChang = (e) => {
@@ -67,7 +70,8 @@ export default class Showdata extends Component{
         let data = {
             idkey:this.state.idkey,
             firstname:this.state.firstname,
-            lastname:this.state.lastname
+            lastname:this.state.lastname,
+            email:this.state.email
         }
         axios.put(url,data)
     }
@@ -77,13 +81,15 @@ export default class Showdata extends Component{
         let data = {
             idkey:this.state.idkey,
             firstname:this.state.firstname,
-            lastname:this.state.lastname
+            lastname:this.state.lastname,
+            email:this.state.email
         }
         axios.put(url,data)
         this.setState({
             idkey:"",
             firstname:"",
-            lastname:""
+            lastname:"",
+            email:""
         });
 	this.closeModal();
         setTimeout(()=>{this.componentDidMount()},1)
@@ -102,6 +108,9 @@ export default class Showdata extends Component{
                             <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
+                            <th>email</th>
+                            <th>regisTime</th>
+                            <th>จังหวัด</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -111,6 +120,8 @@ export default class Showdata extends Component{
                                             <td>{user.id}</td>
                                             <td>{user.firstname}</td>
                                             <td>{user.lastname}</td>
+                                            <td>{user.email}</td>
+                                            <td>{user.regisTime}</td>
                                             <td><button type="button" class="btn btn-warning" onClick={()=>this.call(user)}>Edit</button></td>
                                             <td><button type="button" class="btn btn-danger"  onClick={()=>this.onDelete(user)}>Delete</button></td>
                                             <div className="box">
