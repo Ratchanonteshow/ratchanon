@@ -66,7 +66,9 @@ app.post('/data', function(req, res){
         firstname:req.body.firstname,
         lastname:req.body.lastname,
         email:req.body.email,
-        regisTime:dateTime
+        regisTime:dateTime,
+        province:req.body.province
+        
     };
     let sql = 'INSERT INTO users SET ?';
     db.query(sql, data, (err, result)=>{

@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom';
             idkey:"",
             firstname:"",
             lastname:"",
+            province:""
          
         }
         this.handleChang = this.handleChang.bind(this);
@@ -27,12 +28,14 @@ import { useHistory } from 'react-router-dom';
             firstname:this.state.firstname,
             lastname:this.state.lastname,
             email:JSON.parse(localStorage.getItem('user')).email,
+            province:this.state.province
         }
         axios.post(url,data)
         this.setState({
             idkey:"",
             firstname:"",
             lastname:"",
+            province:""
         
         });
     }
@@ -56,6 +59,10 @@ import { useHistory } from 'react-router-dom';
                     <div className="form-group">
                         <label className="text-white"  htmlFor="id">Id</label>
                         <input type="text" className="form-control" size="10" id="idkey" onChange={this.handleChang} value={this.state.idkey}/>
+                    </div>
+                    <div className="form-group">
+                        <label className="text-white" >province</label>
+                        <input type="text" className="form-control" id="province" onChange={this.handleChang} value={this.state.province}/>
                     </div>
                     <button type="button" className="btn btn-primary" onClick={this.handleClicked}>Submit</button>
                 </form>

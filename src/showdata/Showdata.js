@@ -13,7 +13,8 @@ export default class Showdata extends Component{
             idkey:"",
             firstname:"",
             lastname:"",
-            email:""
+            email:"",
+            province:""
 
         }
         this.handleChang = this.handleChang.bind(this);
@@ -60,6 +61,7 @@ export default class Showdata extends Component{
             firstname:user.firstname,
             lastname:user.lastname,
             email:user.email,
+            province:user.province,
         })
     }
     handleChang = (e) => {
@@ -71,7 +73,8 @@ export default class Showdata extends Component{
             idkey:this.state.idkey,
             firstname:this.state.firstname,
             lastname:this.state.lastname,
-            email:this.state.email
+            email:this.state.email,
+            province:this.state.province
         }
         axios.put(url,data)
     }
@@ -82,14 +85,16 @@ export default class Showdata extends Component{
             idkey:this.state.idkey,
             firstname:this.state.firstname,
             lastname:this.state.lastname,
-            email:this.state.email
+            email:this.state.email,
+            province:this.state.province
         }
         axios.put(url,data)
         this.setState({
             idkey:"",
             firstname:"",
             lastname:"",
-            email:""
+            email:"",
+            province:""
         });
 	this.closeModal();
         setTimeout(()=>{this.componentDidMount()},1)
@@ -110,7 +115,7 @@ export default class Showdata extends Component{
                             <th>Last Name</th>
                             <th>email</th>
                             <th>regisTime</th>
-                            <th>จังหวัด</th>
+                            <th>province</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -122,6 +127,7 @@ export default class Showdata extends Component{
                                             <td>{user.lastname}</td>
                                             <td>{user.email}</td>
                                             <td>{user.regisTime}</td>
+                                            <td>{user.province}</td>
                                             <td><button type="button" class="btn btn-warning" onClick={()=>this.call(user)}>Edit</button></td>
                                             <td><button type="button" class="btn btn-danger"  onClick={()=>this.onDelete(user)}>Delete</button></td>
                                             <div className="box">
@@ -142,6 +148,10 @@ export default class Showdata extends Component{
                                                         <div className="form-group">
                                                             <label>lasttname:</label>
                                                             <input type="text" className="form-control" id="lastname" onChange={this.handleChang} value={this.state.lastname}/>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label>firstname:</label>
+                                                            <input type="text" className="form-control" id="province" onChange={this.handleChang} value={this.state.province}/>
                                                         </div>
                                                         <button type="button" className="btn btn-primary" onClick={this.handleClicked}>Submit</button>
                                                     </form>
